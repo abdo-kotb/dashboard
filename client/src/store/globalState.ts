@@ -2,10 +2,12 @@ import { createSlice } from '@reduxjs/toolkit'
 
 interface InitialState {
   mode: 'dark' | 'light'
+  userId: string
 }
 
 const initialState: InitialState = {
   mode: 'dark',
+  userId: '63701ccf03239b7f700000e',
 }
 
 export const globalSlice = createSlice({

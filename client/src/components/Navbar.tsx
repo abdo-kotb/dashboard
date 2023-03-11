@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setMode } from '../store/globalState'
 
@@ -14,7 +14,11 @@ import {
 import FlexBetween from './FlexBetween'
 import profileImage from '@/assets/profile.jpeg'
 
-const Navbar = () => {
+interface IProps {
+  setIsSidebarOpen: Dispatch<SetStateAction<boolean>>
+}
+
+const Navbar = ({ setIsSidebarOpen }: IProps) => {
   const dispatch = useDispatch()
   const theme = useTheme()
 
@@ -29,11 +33,11 @@ const Navbar = () => {
       <Toolbar sx={{ justifyContent: 'space-between' }}>
         {/* LEFT SIDE */}
         <FlexBetween>
-          <IconButton onClick={() => {}}>
+          <IconButton onClick={() => setIsSidebarOpen(state => !state)}>
             <MenuIcon />
           </IconButton>
           <FlexBetween
-            bgcolor={theme.palette.background.paper}
+            bgcolor={theme.palette.background.alt}
             borderRadius="9px"
             gap="3rem"
             p="0.1rem 1.5rem"

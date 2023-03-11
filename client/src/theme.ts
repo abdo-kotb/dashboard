@@ -92,7 +92,7 @@ export const themeSettings = (mode: 'dark' | 'light'): ThemeOptions => {
             },
             background: {
               default: tokensDark.primary[600],
-              paper: tokensDark.primary[500],
+              alt: tokensDark.primary[500],
             },
           }
         : {
@@ -113,7 +113,7 @@ export const themeSettings = (mode: 'dark' | 'light'): ThemeOptions => {
             },
             background: {
               default: tokensDark.grey[0],
-              paper: tokensDark.grey[50],
+              alt: tokensDark.grey[50],
             },
           }),
     },
