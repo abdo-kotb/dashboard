@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 
 import {
   Box,
+  Divider,
   Drawer,
   IconButton,
   List,
@@ -23,12 +24,14 @@ import {
 } from '@mui/icons-material'
 
 import profileImage from '../assets/profile.jpeg'
+import User from '../types/User'
 
 interface IProps {
   isNotMobile: boolean
   drawerWidth: string
   isSidebarOpen: boolean
   setIsSidebarOpen: Dispatch<SetStateAction<boolean>>
+  user: User | undefined
 }
 
 const Sidebar = ({
@@ -36,6 +39,7 @@ const Sidebar = ({
   isNotMobile,
   isSidebarOpen,
   setIsSidebarOpen,
+  user,
 }: IProps) => {
   const { pathname } = useLocation()
   const [active, setActive] = useState('')
@@ -65,8 +69,8 @@ const Sidebar = ({
             },
           }}
         >
-          <Box width="100%">
-            <Box m="1.5rem 2rem 2rem 3rem">
+          <Box width="100%" height="100%">
+            <Box m="1.5rem 1rem 2rem 2rem">
               <FlexBetween color={theme.palette.secondary.main}>
                 <Box display="flex" alignItems="center" gap="0.5rem">
                   <Typography variant="h4" fontWeight="bold">
@@ -80,11 +84,18 @@ const Sidebar = ({
                 )}
               </FlexBetween>
             </Box>
-            <List>
+            <List
+              sx={{
+                height: 'calc(100% - 180px)',
+                overflow: 'auto',
+              }}
+            >
               {navItems.map(({ text, icon }) => {
                 if (!icon)
                   return (
-                    <Typography key={text} sx={{ m: '2.25rem 0 1rem 3rem' }} />
+                    <Typography key={text} sx={{ m: '2.25rem 0 1rem 3rem' }}>
+                      {text}
+                    </Typography>
                   )
 
                 const lcText = text.toLowerCase()
@@ -127,6 +138,55 @@ const Sidebar = ({
                 )
               })}
             </List>
+          </Box>
+          <Box
+            position="absolute"
+            pb="2rem"
+            width="100%"
+            bottom={0}
+            bgcolor={theme.palette.background.alt}
+          >
+            {user && (
+              <>
+                <Divider />
+                <FlexBetween
+                  textTransform="none"
+                  gap="1rem"
+                  m="1.5rem 2rem 0 3rem"
+                >
+                  <Box
+                    component="img"
+                    alt="profile"
+                    src={profileImage}
+                    height="40px"
+                    width="40px"
+                    borderRadius="50%"
+                    sx={{ objectFit: 'cover' }}
+                  />
+                  <Box textAlign="left">
+                    <Typography
+                      fontWeight="bold"
+                      fontSize="0.9rem"
+                      color={theme.palette.secondary[100]}
+                    >
+                      {user.name}
+                    </Typography>
+                    <Typography
+                      fontSize="0.8rem"
+                      color={theme.palette.secondary[200]}
+                    >
+                      {user.occupation}
+                    </Typography>
+                  </Box>
+                  <SettingsOutlined
+                    sx={{
+                      color: theme.palette.secondary[300],
+                      fontSize: '25px',
+                    }}
+                  />
+                </FlexBetween>
+              </>
+            )}
           </Box>
         </Drawer>
       )}

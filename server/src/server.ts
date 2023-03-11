@@ -34,10 +34,10 @@ app.get('/', (_, res) => {
   res.send('API running...')
 })
 
-// app.use('/api/client')
-// app.use('/api/general')
-// app.use('/api/management')
-// app.use('/api/sales')
+app.use('/api/client', clientRoutes)
+app.use('/api/general', generalRoutes)
+app.use('/api/management', managementRoutes)
+app.use('/api/sales', salesRoutes)
 
 const PORT = process.env.PORT || 5000
 
