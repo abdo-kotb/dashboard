@@ -3,11 +3,17 @@ import colors from 'colors'
 
 import connectDB from './config/db.js'
 
-import { dataUser, dataProduct, dataProductStat } from './data/index.js'
+import {
+  dataUser,
+  dataProduct,
+  dataProductStat,
+  dataTransaction,
+} from './data/index.js'
 
 import User from './models/userModel.js'
 import Product from './models/ProductModel.js'
 import ProductStats from './models/ProductStatsModel.js'
+import Transaction from './models/transactionModel.js'
 
 dotenv.config()
 
@@ -20,10 +26,12 @@ const importData = async () => {
     await User.deleteMany({})
     await Product.deleteMany({})
     await ProductStats.deleteMany({})
+    await Transaction.deleteMany({})
 
     await User.insertMany(dataUser)
     await Product.insertMany(dataProduct)
     await ProductStats.insertMany(dataProductStat)
+    await Transaction.insertMany(dataTransaction)
 
     console.log('Data Imported'.green.inverse)
     process.exit()
@@ -38,6 +46,7 @@ const destroyData = async () => {
     await User.deleteMany({})
     await Product.deleteMany({})
     await ProductStats.deleteMany({})
+    await Transaction.deleteMany({})
 
     console.log('Data Destroyed'.red.inverse)
     process.exit()
