@@ -1,14 +1,10 @@
 import asyncHandler from 'express-async-handler'
 import Product from '../models/productModel.js'
 import ProductStats from '../models/productStatsModel.js'
+import User from '../models/userModel.js'
 
-export const getProducts = asyncHandler(async (req, res) => {
+export const getProducts = asyncHandler(async (_, res) => {
   const products = await Product.find()
-
-  if (!products) {
-    res.status(404)
-    throw new Error('Products not found')
-  }
 
   const productsWithStats = await Promise.all(
     products.map(async product => {
@@ -18,4 +14,10 @@ export const getProducts = asyncHandler(async (req, res) => {
   )
 
   res.status(200).json(productsWithStats)
+})
+
+export const getCustomers = asyncHandler(async (_, res) => {
+  const customers = await User.find({ role: 'user' }).select('-password')
+
+  res.status(200).json(customers)
 })
