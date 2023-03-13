@@ -1,4 +1,6 @@
 import asyncHandler from 'express-async-handler'
+import getCountryIso3 from 'country-iso-2-to-3'
+
 import Product from '../models/productModel.js'
 import ProductStats from '../models/productStatsModel.js'
 import Transaction from '../models/transactionModel.js'
@@ -62,4 +64,26 @@ export const getTransactions = asyncHandler(async (req, res) => {
     transactions,
     total,
   })
+})
+
+export const getGeography = asyncHandler(async (_, res) => {
+  const users = await User.find()
+
+  const mappedLocations = users.reduce(
+    (acc: { [x: string]: number }, { country }) => {
+      const countryISO3 = getCountryIso3(country)
+
+      if (!acc[countryISO3]) acc[countryISO3] = 0
+      acc[countryISO3]++
+
+      return acc
+    },
+    {}
+  )
+
+  const formattedLocations = Object.entries(mappedLocations).map(
+    ([country, count]) => ({ id: country, value: count })
+  )
+
+  res.status(200).json(formattedLocations)
 })
