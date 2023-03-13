@@ -5,7 +5,7 @@ import type User from '../types/User'
 const api = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_BASE_URL }),
   reducerPath: 'adminApi',
-  tagTypes: ['User', 'Products'],
+  tagTypes: ['User', 'Products', 'Customers'],
   endpoints: build => ({
     getUser: build.query<User, string>({
       query: id => `/api/general/user/${id}`,
@@ -15,9 +15,14 @@ const api = createApi({
       query: () => '/api/client/products',
       providesTags: ['Products'],
     }),
+    getCustomers: build.query<User[], void>({
+      query: () => '/api/client/customers',
+      providesTags: ['Customers'],
+    }),
   }),
 })
 
-export default api
+export const { useGetUserQuery, useGetProductsQuery, useGetCustomersQuery } =
+  api
 
-export const { useGetUserQuery, useGetProductsQuery } = api
+export default api
