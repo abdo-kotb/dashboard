@@ -1,6 +1,7 @@
 import {
   PaletteColor as MUIPaletteColor,
   TypeBackground as MUITypeBackground,
+  Palette as MUIPalette,
 } from '@mui/material/styles'
 
 declare module '@mui/material/styles' {
@@ -18,6 +19,10 @@ declare module '@mui/material/styles' {
     800: string
     900: string
     1000: string
+  }
+
+  interface Palette extends MUIPalette {
+    neutral: PaletteColor
   }
 
   interface TypeBackground extends MUITypeBackground {
