@@ -5,7 +5,7 @@ import Header from '../components/Header'
 import { Box, useTheme } from '@mui/material'
 import { DataGrid } from '@mui/x-data-grid'
 
-import columns from '../components/customersTableColumns'
+import { customersColumns } from '../components/tableColumns'
 
 const Customers = () => {
   const { data, isLoading } = useGetCustomersQuery()
@@ -49,7 +49,7 @@ const Customers = () => {
           loading={isLoading}
           getRowId={row => row._id}
           rows={data?.length ? data : []}
-          columns={columns}
+          columns={customersColumns}
         />
       </Box>
     </Box>
