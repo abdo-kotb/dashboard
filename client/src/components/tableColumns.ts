@@ -2,7 +2,7 @@ import type { GridColDef } from '@mui/x-data-grid'
 import { Transaction } from '../types/Transaction'
 import type User from '../types/User'
 
-export const customersColumns: GridColDef<User, any, any>[] = [
+export const usersColumns: GridColDef<User, any, any>[] = [
   {
     field: '_id',
     headerName: 'ID',

@@ -1,22 +1,20 @@
-import { useGetCustomersQuery } from '../store/api'
+import { useGetAdminsQuery } from '../store/api'
+
+import { usersColumns as adminsColumns } from '../components/tableColumns'
 
 import Header from '../components/Header'
 
 import { Box, useTheme } from '@mui/material'
 import { DataGrid } from '@mui/x-data-grid'
+import CustomColumnMenu from '../components/CustomColumnMenu'
 
-import { usersColumns as customersColumns } from '../components/tableColumns'
-
-const Customers = () => {
-  const { data, isLoading } = useGetCustomersQuery()
+const Admins = () => {
+  const { data, isLoading } = useGetAdminsQuery()
   const theme = useTheme()
 
   return (
     <Box m="1.5rem 2.5rem">
-      <Header
-        title="CUSTOMERS"
-        subtitle="List of Customers (client-side data manipulation)"
-      />
+      <Header title="ADMINS" subtitle="Managing admins and list of admins" />
       <Box
         mt="3.25rem"
         height="65vh"
@@ -49,11 +47,14 @@ const Customers = () => {
           loading={isLoading}
           getRowId={row => row._id}
           rows={data?.length ? data : []}
-          columns={customersColumns}
+          columns={adminsColumns}
+          slots={{
+            columnMenu: CustomColumnMenu,
+          }}
         />
       </Box>
     </Box>
   )
 }
 
-export default Customers
+export default Admins

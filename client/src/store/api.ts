@@ -23,6 +23,7 @@ const api = createApi({
     'Transactions',
     'Geography',
     'Sales',
+    'Admins',
   ],
   endpoints: build => ({
     getUser: build.query<User, string>({
@@ -53,6 +54,10 @@ const api = createApi({
       query: () => '/api/sales',
       providesTags: ['Sales'],
     }),
+    getAdmins: build.query<User[], void>({
+      query: () => '/api/management/admins',
+      providesTags: ['Admins'],
+    }),
   }),
 })
 
@@ -63,6 +68,7 @@ export const {
   useGetTransactionsQuery,
   useGetGeographyQuery,
   useGetSalesQuery,
+  useGetAdminsQuery,
 } = api
 
 export default api
