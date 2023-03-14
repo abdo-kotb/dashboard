@@ -113,6 +113,7 @@ const OverviewChart = ({ view, isDashboard }: IProps) => {
         legendPosition: 'middle',
       }}
       axisLeft={{
+        tickValues: 5,
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
@@ -130,6 +131,7 @@ const OverviewChart = ({ view, isDashboard }: IProps) => {
       pointBorderColor={{ from: 'serieColor' }}
       pointLabelYOffset={-12}
       useMesh={true}
+      enableArea={isDashboard}
       legends={
         !isDashboard
           ? [

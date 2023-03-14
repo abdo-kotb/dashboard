@@ -5,7 +5,8 @@ import type User from '../types/User'
 import type Transactions from '../types/Transaction'
 import type Geography from '../types/Geography'
 import type Sales from '../types/Sales'
-import { UserWithStats } from '../types/User'
+import { UserWithStats } from '../types/Sales'
+import type Dashboard from '../types/Dashboard'
 
 interface TransactionsParams {
   page: number
@@ -26,6 +27,7 @@ const api = createApi({
     'Sales',
     'Admins',
     'Performance',
+    'Dashboard',
   ],
   endpoints: build => ({
     getUser: build.query<User, string>({
@@ -64,6 +66,10 @@ const api = createApi({
       query: id => `/api/management/performance/${id}`,
       providesTags: ['Performance'],
     }),
+    getDashboard: build.query<Dashboard, void>({
+      query: () => '/api/general/dashboard',
+      providesTags: ['Dashboard'],
+    }),
   }),
 })
 
@@ -76,6 +82,7 @@ export const {
   useGetSalesQuery,
   useGetAdminsQuery,
   useGetPerformanceQuery,
+  useGetDashboardQuery,
 } = api
 
 export default api
