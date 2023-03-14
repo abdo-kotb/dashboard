@@ -4,6 +4,6 @@ import { getSales } from '../controllers/salesControllers.js'
 
 const router = Router()
 
-router.get('/sales', getSales)
+router.get('/', getSales)
 
 export default router

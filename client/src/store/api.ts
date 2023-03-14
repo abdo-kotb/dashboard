@@ -4,6 +4,7 @@ import type Product from '../types/Product'
 import type User from '../types/User'
 import type Transactions from '../types/Transaction'
 import type Geography from '../types/Geography'
+import type Sales from '../types/Sales'
 
 interface TransactionsParams {
   page: number
@@ -15,7 +16,14 @@ interface TransactionsParams {
 const api = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_BASE_URL }),
   reducerPath: 'adminApi',
-  tagTypes: ['User', 'Products', 'Customers', 'Transactions', 'Geography'],
+  tagTypes: [
+    'User',
+    'Products',
+    'Customers',
+    'Transactions',
+    'Geography',
+    'Sales',
+  ],
   endpoints: build => ({
     getUser: build.query<User, string>({
       query: id => `/api/general/user/${id}`,
@@ -41,6 +49,10 @@ const api = createApi({
       query: () => '/api/client/geography',
       providesTags: ['Geography'],
     }),
+    getSales: build.query<Sales, void>({
+      query: () => '/api/sales',
+      providesTags: ['Sales'],
+    }),
   }),
 })
 
@@ -50,6 +62,7 @@ export const {
   useGetCustomersQuery,
   useGetTransactionsQuery,
   useGetGeographyQuery,
+  useGetSalesQuery,
 } = api
 
 export default api
