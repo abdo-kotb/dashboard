@@ -1,6 +1,7 @@
 import type { GridColDef } from '@mui/x-data-grid'
 import { Transaction } from '../types/Transaction'
 import type User from '../types/User'
+import { AffiliateSale } from '../types/User'
 
 export const usersColumns: GridColDef<User, any, any>[] = [
   {
@@ -58,6 +59,37 @@ export const transactionsColumns: GridColDef<Transaction, any, any>[] = [
     headerName: 'Created At',
     flex: 1,
     renderCell: params => new Date(params.value).toLocaleString(),
+  },
+  {
+    field: 'products',
+    headerName: '# of Products',
+    flex: 0.5,
+    sortable: false,
+    renderCell: params => params.value.length,
+  },
+  {
+    field: 'cost',
+    headerName: 'Cost',
+    flex: 1,
+    renderCell: params => `$${Number(params.value).toFixed(2)}`,
+  },
+]
+
+export const performanceColumns: GridColDef<AffiliateSale, any, any>[] = [
+  {
+    field: '_id',
+    headerName: 'ID',
+    flex: 1,
+  },
+  {
+    field: 'userId',
+    headerName: 'User ID',
+    flex: 1,
+  },
+  {
+    field: 'createdAt',
+    headerName: 'Created At',
+    flex: 1,
   },
   {
     field: 'products',
