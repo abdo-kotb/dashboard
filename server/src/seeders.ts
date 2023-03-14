@@ -8,12 +8,14 @@ import {
   dataProduct,
   dataProductStat,
   dataTransaction,
+  dataOverallStat,
 } from './data/index.js'
 
 import User from './models/userModel.js'
 import Product from './models/ProductModel.js'
 import ProductStats from './models/ProductStatsModel.js'
 import Transaction from './models/transactionModel.js'
+import OverallStat from './models/OverallStatModel.js'
 
 dotenv.config()
 
@@ -27,11 +29,13 @@ const importData = async () => {
     await Product.deleteMany({})
     await ProductStats.deleteMany({})
     await Transaction.deleteMany({})
+    await OverallStat.deleteMany({})
 
     await User.insertMany(dataUser)
     await Product.insertMany(dataProduct)
     await ProductStats.insertMany(dataProductStat)
     await Transaction.insertMany(dataTransaction)
+    await OverallStat.insertMany(dataOverallStat)
 
     console.log('Data Imported'.green.inverse)
     process.exit()
@@ -47,6 +51,7 @@ const destroyData = async () => {
     await Product.deleteMany({})
     await ProductStats.deleteMany({})
     await Transaction.deleteMany({})
+    await OverallStat.deleteMany({})
 
     console.log('Data Destroyed'.red.inverse)
     process.exit()
