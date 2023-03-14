@@ -28,6 +28,7 @@ export const getProducts = asyncHandler(async (_, res) => {
   const productsWithStats = await Promise.all(
     products.map(async product => {
       const stats = await ProductStats.findOne({ productId: product._id })
+      // @ts-ignore
       return { ...product._doc, stats }
     })
   )

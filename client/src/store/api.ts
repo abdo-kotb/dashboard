@@ -2,10 +2,10 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 import type Product from '../types/Product'
 import type User from '../types/User'
+import { UserWithStats } from '../types/User'
 import type Transactions from '../types/Transaction'
 import type Geography from '../types/Geography'
 import type Sales from '../types/Sales'
-import { UserWithStats } from '../types/Sales'
 import type Dashboard from '../types/Dashboard'
 
 interface TransactionsParams {
@@ -15,8 +15,13 @@ interface TransactionsParams {
   search: string
 }
 
+const baseUrl =
+  process.env.NODE_ENV === 'production'
+    ? import.meta.env.VITE_BASE_URL
+    : process.env.BASE_URL
+
 const api = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_BASE_URL }),
+  baseQuery: fetchBaseQuery({ baseUrl }),
   reducerPath: 'adminApi',
   tagTypes: [
     'User',
