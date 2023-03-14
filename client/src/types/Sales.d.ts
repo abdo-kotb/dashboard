@@ -13,7 +13,7 @@ export default interface Sales {
 }
 
 interface LyDatum {
-  date?: Date
+  date?: string
   totalSales: number
   totalUnits: number
   _id: string
