@@ -13,10 +13,10 @@ import {
 } from './data/index.js'
 
 import User from './models/userModel.js'
-import Product from './models/ProductModel.js'
-import ProductStats from './models/ProductStatsModel.js'
+import Product from './models/productModel.js'
+import ProductStats from './models/productStatsModel.js'
 import Transaction from './models/transactionModel.js'
-import OverallStat from './models/OverallStatModel.js'
+import OverallStat from './models/overallStatModel.js'
 import AffiliateStat from './models/affiliateStat.js'
 
 dotenv.config()
