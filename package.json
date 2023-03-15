@@ -9,7 +9,7 @@
     "server": "concurrently \"tsc --watch\" \"nodemon -q server/dist/server.js\"",
     "client": "npm run dev --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "npm run build --prefix client && npm start",
+    "build": "npm run build --prefix client && tsc",
     "data:import": "node server/dist/seeders",
     "data:destroy": "node server/dist/seeders -d"
   },
