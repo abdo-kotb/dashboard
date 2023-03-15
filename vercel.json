@@ -12,10 +12,6 @@
     }
   ],
   "routes": [{ "src": "/(.*)", "dest": "server/dist/server.js" }],
-  "build": {
-    "env": {
-      "NODE_ENV": "production"
-    },
-    "postbuild": "npm run start"
-  }
+  "buildCommand": "npm run build",
+  "installCommand": "npm run install && npm run install --prefix client"
 }
