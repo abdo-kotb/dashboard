@@ -2,19 +2,20 @@
   "version": 2,
   "builds": [
     {
-      "src": "./server/dist/server.js",
+      "src": "server/dist/server.js",
       "use": "@vercel/node"
     },
     {
-      "src": "./server/dist/server.js",
+      "src": "client/dist/**",
       "use": "@vercel/static"
     }
   ],
-
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/server/dist/server.js"
-    }
-  ]
+  "routes": [{ "src": "/(.*)", "dest": "server/dist/server.js" }],
+  "build": {
+    "env": {
+      "NODE_ENV": "production"
+    },
+    "command": "npm run build",
+    "postbuild": "npm run start"
+  }
 }

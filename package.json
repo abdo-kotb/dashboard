@@ -5,7 +5,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node server/dist/server.js",
+    "start": "node server/dist/server.js",
     "server": "concurrently \"tsc --watch\" \"nodemon -q server/dist/server.js\"",
     "client": "npm run dev --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
