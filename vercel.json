@@ -16,7 +16,6 @@
     "env": {
       "NODE_ENV": "production"
     },
-    "build": "npm run build",
     "postbuild": "npm run start"
   }
 }
