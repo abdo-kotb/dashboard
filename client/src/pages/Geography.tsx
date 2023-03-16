@@ -1,8 +1,12 @@
+import { Helmet } from 'react-helmet'
+import { useGetGeographyQuery } from '../store/api'
+
+import geoData from '../data/geoData'
+
 import { Box, useTheme } from '@mui/material'
 import { ResponsiveChoropleth } from '@nivo/geo'
+
 import Header from '../components/Header'
-import geoData from '../data/geoData'
-import { useGetGeographyQuery } from '../store/api'
 
 const Geography = () => {
   const theme = useTheme()
@@ -10,6 +14,10 @@ const Geography = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
+      <Helmet>
+        <title>Geography | Dashboard</title>
+      </Helmet>
+
       <Header title="GEOGRAPHY" subtitle="Find where your users are located" />
       <Box
         mt="3.25rem"

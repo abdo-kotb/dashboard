@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet'
 import { useGetCustomersQuery } from '../store/api'
 
 import Header from '../components/Header'
@@ -13,6 +14,10 @@ const Customers = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
+      <Helmet>
+        <title>Customers | Dashboard</title>
+      </Helmet>
+
       <Header
         title="CUSTOMERS"
         subtitle="List of Customers (client-side data manipulation)"

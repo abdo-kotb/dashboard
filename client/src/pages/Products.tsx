@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet'
 import { useGetProductsQuery } from '../store/api'
 
 import Header from '../components/Header'
@@ -11,6 +12,10 @@ const Products = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
+      <Helmet>
+        <title>Products | Dashboard</title>
+      </Helmet>
+
       <Header title="PRODUCTS" subtitle="See your list of products..." />
       {data?.length && !isLoading ? (
         <Box

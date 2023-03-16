@@ -116,6 +116,7 @@ const Dashboard = () => {
 
         {/* Row 2 */}
         <Box
+          mb="1.5rem"
           gridColumn="span 8"
           gridRow="span 3"
           sx={{
@@ -152,6 +153,7 @@ const Dashboard = () => {
           />
         </Box>
         <Box
+          mb="1.5rem"
           gridColumn="span 4"
           gridRow="span 3"
           bgcolor={theme.palette.background.alt}

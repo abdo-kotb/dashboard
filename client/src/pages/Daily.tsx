@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet'
 import { useMemo, useState } from 'react'
 import { useGetSalesQuery } from '../store/api'
 
@@ -53,6 +54,10 @@ const Daily = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
+      <Helmet>
+        <title>Daily | Dashboard</title>
+      </Helmet>
+
       <Header title="DAILY SALES" subtitle="Chart of daily sales" />
       <Box height="70vh" width="90%">
         <Box display="flex" justifyContent="flex-end">

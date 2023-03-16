@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet'
 import { useGetPerformanceQuery } from '../store/api'
 import { AppState } from '../store'
 
@@ -17,6 +18,10 @@ const Performance = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
+      <Helmet>
+        <title>Performance | Dashboard</title>
+      </Helmet>
+
       <Header
         title="PERFORMANCE"
         subtitle="Track your affiliate sales performance here"

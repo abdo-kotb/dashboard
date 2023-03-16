@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Helmet } from 'react-helmet'
 
 import { useGetTransactionsQuery } from '../store/api'
 
@@ -7,7 +8,7 @@ import Header from '../components/Header'
 import CustomDataGridToolbar from '../components/CustomDataGridToolbar'
 
 import { Box, useTheme } from '@mui/material'
-import { DataGrid, GridSortItem, GridSortModel } from '@mui/x-data-grid'
+import { DataGrid, GridSortItem } from '@mui/x-data-grid'
 
 const Transactions = () => {
   const theme = useTheme()
@@ -27,6 +28,10 @@ const Transactions = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
+      <Helmet>
+        <title>Transactions | Dashboard</title>
+      </Helmet>
+
       <Header
         title="TRANSACTIONS"
         subtitle="List of transactions (server-side data manipulation)"

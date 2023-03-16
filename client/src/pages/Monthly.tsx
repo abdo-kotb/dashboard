@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet'
 import { useMemo } from 'react'
 import { useGetSalesQuery } from '../store/api'
 
@@ -43,6 +44,10 @@ const Monthly = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
+      <Helmet>
+        <title>Monthly | Dashboard</title>
+      </Helmet>
+
       <Header title="MONTHLY SALES" subtitle="Chart of monthly sales" />
       <Box height="70vh" width="90%">
         {formattedData ? (

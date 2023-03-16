@@ -15,10 +15,13 @@ interface TransactionsParams {
   search: string
 }
 
-const baseUrl =
-  process.env.NODE_ENV === 'production'
-    ? import.meta.env.VITE_BASE_URL
-    : process.env.BASE_URL
+let baseUrl: string
+
+if (typeof process !== 'undefined' && process.env.NODE_ENV === 'production') {
+  baseUrl = process.env.BASE_URL!
+} else {
+  baseUrl = import.meta.env.VITE_BASE_URL
+}
 
 const api = createApi({
   baseQuery: fetchBaseQuery({ baseUrl }),
