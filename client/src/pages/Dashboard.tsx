@@ -1,3 +1,5 @@
+import { Helmet } from 'react-helmet'
+
 import { useGetDashboardQuery } from '../store/api'
 
 import { transactionsColumns as dashboardColumns } from '../components/tableColumns'
@@ -26,6 +28,10 @@ const Dashboard = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
+      <Helmet>
+        <title>Daily | Dashboard</title>
+      </Helmet>
+
       <FlexBetween>
         <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
 
